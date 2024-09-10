@@ -18,11 +18,15 @@ const Form = (props) => {
     const aoSalvar = (evento) =>{
         evento.preventDefault()
         props.aoColaboradorCadastrado({
-            nome: nome,
-            cargo: cargo,
-            imagem: imagem,
-            time: time
+            nome,
+            cargo,
+            imagem,
+            time
         })
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
     }
 
     return (
