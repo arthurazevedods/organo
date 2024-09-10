@@ -1,14 +1,14 @@
 import './Member.css'
 
-const Member = () =>{
+const Member = ({nome,imagem,cargo}) =>{
     return(
         <div className='colaborador'>
             <div className='cabecalho'>
-                <img src='https://github.com/arthurazevedods.png' alt='Foto do Colaborador'></img>
+                <img src={imagem} alt={nome}></img>
             </div>
             <div className='rodape'>
-                <h4>Arthur Silva</h4>
-                <h5>Front-End</h5>
+                <h4>{nome}</h4>
+                <h5>{cargo}</h5>
             </div>
         </div>
     )
