@@ -48,7 +48,6 @@ const App = () => {
 
   const [colaboradores, setColaboradores] = useState([])
   const aoNovoColaboradorAdicionar = (colaborador) => {
-    console.log(colaborador)
     //espalha os antigos colaboradores e adiciona o novo no final
     setColaboradores([...colaboradores, colaborador])
   }
