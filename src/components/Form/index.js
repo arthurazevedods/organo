@@ -1,5 +1,5 @@
 import './Form.css'
-import TextField from '../TextField'
+import Field from '../Field'
 import Dropdown from '../Dropdown'
 import CustomButton from '../CustomButton'
 import { useState } from 'react'
@@ -13,7 +13,7 @@ const Form = ({ aoCadastrar, times, aoCriarTime }) => {
     const [time, setTime] = useState('')
     const [nomeTime, setNomeTime] = useState('')
     const [corTime, setCorTime] = useState('')
-    
+
     const aoSalvar = (evento) => {
         evento.preventDefault()
         aoCadastrar({
@@ -25,24 +25,24 @@ const Form = ({ aoCadastrar, times, aoCriarTime }) => {
     }
 
     return (
-        <section className='form'>
-            <form onSubmit={aoSalvar}>
+        <section className='formulario-container'>
+            <form className="formulario" onSubmit={aoSalvar}>
                 <h2>Preencha os dados para criar Card.</h2>
-                <TextField
+                <Field
                     obrigatorio={true}
                     label="Nome"
                     placeholder="Digite o Nome"
                     valor={nome}
                     aoAlterado={valor => setNome(valor)}
                 />
-                <TextField
+                <Field
                     obrigatorio={true}
                     label="Cargo"
                     placeholder="Digite o Cargo"
                     valor={cargo}
                     aoAlterado={valor => setCargo(valor)}
                 />
-                <TextField
+                <Field
                     label="Imagem"
                     placeholder="Informe o endereço da imagem"
                     valor={imagem}
@@ -65,14 +65,15 @@ const Form = ({ aoCadastrar, times, aoCriarTime }) => {
                 aoCriarTime({ nome: nomeTime, cor: corTime })
             }}>
                 <h2>Preencha os dados para criar um novo time.</h2>
-                <TextField
+                <Field
                     obrigatorio
                     label="Nome"
                     placeholder="Digite o nome do Time"
                     valor={nomeTime}
                     aoAlterado={valor => setNomeTime(valor)}
                 />
-                <TextField
+                <Field
+                    type = 'color'
                     obrigatorio
                     label="Cor"
                     placeholder="Digite a cor do time"
