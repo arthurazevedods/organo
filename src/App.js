@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
-  const [times, setTimes] = useState ([
+  const [times, setTimes] = useState([
     {
       id: uuidv4(),
       nome: 'Programação',
@@ -218,33 +218,42 @@ function App() {
   ]
 
   const [colaboradores, setColaboradores] = useState(inicial)
-  
-  function deletarColaborador(id){
+
+  function deletarColaborador(id) {
     setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id));
   }
 
-  function mudarCorTime(cor,id){
+  function mudarCorTime(cor, id) {
     setTimes(times.map(time => {
-      if(time.id === id) {
+      if (time.id === id) {
         time.cor = cor;
       }
       return time;
     }))
   }
 
+  function cadastrarTime(novotime){
+    setTimes([...times, { ...novotime, id: uuidv4()}])
+  }
+
+
   return (
     <div>
       <Banner />
-      <Form times={times.map(time => time.nome)} aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])} />
+      <Form 
+        times={times.map(time => time.nome)} 
+        aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])} 
+        aoCriarTime={cadastrarTime}
+      />
       <section className="times">
         <h1>Minha organização</h1>
-        {times.map((time, indice) => 
-          <Time 
-            key={indice} 
-            time={time} 
+        {times.map((time, indice) =>
+          <Time
+            key={indice}
+            time={time}
             colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
             aoDeletar={deletarColaborador}
-            mudarCor={mudarCorTime} 
+            mudarCor={mudarCorTime}
           />
         )}
       </section>
