@@ -8,6 +8,5 @@ function Banner() {
     )
 }
 
-document.createElement('img')
 
 export default Banner
